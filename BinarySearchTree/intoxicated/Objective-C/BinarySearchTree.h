@@ -19,7 +19,6 @@
 //tree information methods
 - (NSInteger)getHeight;
 - (NSInteger)numberOfNode;
-- (NSInteger)maxDepth;
 - (BOOL)isEmpty;
 
 //access methods
@@ -27,17 +26,19 @@
 - (void)deleteNode:(NSInteger)value;
 - (BOOL)lookupValue:(NSInteger)value;
 
-- (BinarySearchTree *)mirror;
-- (void)makeBalance;
-- (BOOL)isBalanced;
+//balance tree, future works
+//- (BinarySearchTree *)mirror;
+//- (void)makeBalance;
+//- (BOOL)isBalanced;
 
 //traversal methods
 - (void)printInOrder;
 - (void)printPreOrder;
 - (void)printPostOrder;
+- (void)printPathTo:(NSInteger)value;
 
-//misc methods
-- (NSInteger)pathSumToValue:(NSInteger)value;
-- (BOOL)isEqualToTree:(BinarySearchTree *)otherRoot;
+//misc methods, future works
+//- (NSInteger)pathSumToValue:(NSInteger)value;
+//- (BOOL)isEqualToTree:(BinarySearchTree *)otherRoot;
 
 @end

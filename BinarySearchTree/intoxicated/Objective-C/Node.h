@@ -16,12 +16,13 @@
 
 @property (nonatomic, assign) NSInteger height;
 @property (nonatomic, assign) NSInteger count;
-@property (nonatomic, assign) NSInteger maxDepth;
 
 - (id)initWithValue:(NSInteger)value;
 
 - (BOOL)hasOneChild;
 - (BOOL)hasTwoChildren;
 - (BOOL)isLeaf;
+
+- (void)swapDataWith:(Node *)otherNode;
 
 @end
