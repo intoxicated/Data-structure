@@ -11,13 +11,14 @@
 @interface Stack : NSObject
 
 - (id)init;
-- (id)initWith:(NSInteger)size;
+- (id)initWithSize:(NSInteger)size;
 - (id)initWithStack:(Stack *)otherStack;
 
 //access
 - (id)pop;
 - (id)top;
 - (void)push:(id)obj;
+- (void)swap:(Stack *)otherStack;
 
 //stack info
 - (NSInteger)size;

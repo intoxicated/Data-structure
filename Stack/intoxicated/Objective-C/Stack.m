@@ -8,9 +8,9 @@
 
 #import "Stack.h"
 
-@interface Stack (Private)
+@interface Stack ()
 @property (nonatomic, strong) NSMutableArray * innerStack;
-@property (nonatomic, assign) NSInteger size;
+@property (nonatomic, assign) NSUInteger stackSize;
 @property (nonatomic, assign) BOOL isFixedSize;
 @end
 
@@ -28,6 +28,7 @@
     {
         self.innerStack = [[NSMutableArray alloc] init];
         self.isFixedSize = NO;
+        self.stackSize = 0;
     }
     return self;
 }
@@ -36,12 +37,12 @@
  * Init with fixed size
  * @param size a integer for stack size
  */
-- (id)initWith:(NSInteger)size
+- (id)initWithSize:(NSInteger)size
 {
     if(self = [super init])
     {
         self.innerStack = [[NSMutableArray alloc] initWithCapacity:size];
-        self.size = size;
+        self.stackSize = size;
         self.isFixedSize = YES;
     }
     return self;
@@ -58,7 +59,7 @@
         self.innerStack = [[NSMutableArray alloc] initWithArray:otherStack.innerStack copyItems:YES];
         if(otherStack.isFixedSize)
         {
-            self.size = otherStack.size;
+            self.stackSize = otherStack.stackSize;
             self.isFixedSize = YES;
         }
     }
@@ -74,7 +75,7 @@
 - (id)pop
 {
     if([self isEmpty])
-        ; //warning nothing to pop
+        [NSException raise:@"Empty stack" format:@"stack is empty"]; //warning nothing to pop
     
     id obj = [self.innerStack lastObject];
     [self.innerStack removeLastObject];
@@ -88,7 +89,7 @@
 - (id)top
 {
     if([self isEmpty])
-        ; //warning nothing on stack
+        [NSException raise:@"Empty stack" format:@"stack is empty"]; //warning nothing on stack
     return [self.innerStack lastObject];
 }
 
@@ -98,9 +99,28 @@
  */
 - (void)push:(id)obj
 {
-    if(self.isFixedSize && self.innerStack.count == self.size)
-        ; //cannot push anymore due to fix size stack 
+    if(self.isFixedSize && self.innerStack.count == self.stackSize)
+        [NSException raise:@"Exceed max size" format:@"Stack is already fulled"];
     [self.innerStack addObject:obj];
+}
+
+/**
+ * Swap stacks
+ * @param stack an other stack object to be swap
+ */
+- (void)swap:(Stack *)otherStack
+{
+    Stack * temp = [[Stack alloc] initWithStack:otherStack];
+    
+    otherStack.innerStack = self.innerStack;
+    otherStack.stackSize = self.stackSize;
+    otherStack.isFixedSize = self.isFixedSize;
+    
+    self.innerStack = temp.innerStack;
+    self.stackSize = temp.stackSize;
+    self.isFixedSize = temp.isFixedSize;
+    
+    temp = nil;
 }
 
 #pragma mark - stack information methods
