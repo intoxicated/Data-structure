@@ -18,7 +18,10 @@
 - (id)pop;
 - (id)top;
 - (void)push:(id)obj;
+
+//modification
 - (void)swap:(Stack *)otherStack;
+- (void)add:(Stack *)otherStack;
 
 //stack info
 - (NSInteger)size;
