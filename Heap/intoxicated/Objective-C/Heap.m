@@ -15,7 +15,6 @@
 - (void)max_heapify:(NSInteger)index;
 - (void)min_heapify:(NSInteger)index;
 - (void)swapWith:(NSInteger)index otherIndex:(NSInteger)otherIndex;
-
 - (NSInteger)left:(NSInteger)index;
 - (NSInteger)right:(NSInteger)index;
 @end
