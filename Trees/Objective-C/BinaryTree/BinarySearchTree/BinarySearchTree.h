@@ -7,34 +7,17 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BinaryTree.h"
 
 @class Node;
 
-@interface BinarySearchTree : NSObject
-
-@property (nonatomic, strong) Node * root;
-
-- (id)init;
-
-//tree information methods
-- (NSInteger)getHeight;
-- (NSInteger)numberOfNode;
-- (BOOL)isEmpty;
-
-//access methods
-- (void)insertNode:(NSInteger)value;
-- (void)deleteNode:(NSInteger)value;
-- (BOOL)lookupValue:(NSInteger)value;
+@interface BinarySearchTree : BinaryTree 
 
 //balance tree, future works
 //- (BinarySearchTree *)mirror;
 //- (void)makeBalance;
 //- (BOOL)isBalanced;
 
-//traversal methods
-- (void)printInOrder;
-- (void)printPreOrder;
-- (void)printPostOrder;
 - (void)printPathTo:(NSInteger)value;
 
 //misc methods, future works
