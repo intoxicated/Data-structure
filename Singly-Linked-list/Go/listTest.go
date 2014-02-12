@@ -1,12 +1,11 @@
 package main
 
 import (
-    "./linkedlist"
-    //"fmt"
+    "intoxicated/list"
 )
 
 func main() {
-    lst := linkedlist.NewList(false)
+    lst := list.NewList(false)
 
     lst.Insert(5)
     lst.Insert(7)
